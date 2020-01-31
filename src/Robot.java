@@ -1,4 +1,4 @@
-public class Robot {
+public class Robot implements RobotConnectionManager,RobotConnection {
     int x;
     int y;
     Direction look;
@@ -118,8 +118,22 @@ public class Robot {
         return;
 
     }
+    public static void moveRobot(RobotConnectionManager robotConnectionManager, int toX, int toY) {
+        robotConnectionManager.getConnection();
+        // your implementation here
+    }
 
 
+    @Override
+    public void moveRobotTo(int x, int y) {
+    }
 
+    @Override
+    public void close() {
+    }
 
+    @Override
+    public RobotConnection getConnection() {
+        return null;
+    }
 }
