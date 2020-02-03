@@ -1,7 +1,8 @@
-public class Robot implements RobotConnectionManager,RobotConnection {
+public class Robot implements RobotConnectionManager, RobotConnection {
     int x;
     int y;
     Direction look;
+
 
     public Robot(int x, int y, Direction look) {
         this.x = x;
@@ -25,12 +26,12 @@ public class Robot implements RobotConnectionManager,RobotConnection {
     public Direction turnLeft() {
 
         if (look.ordinal() == 0) return look = Direction.LEFT;
-        return look = Direction.values()[look.ordinal()-1];// повернуться на 90 градусов против часовой стрелки
+        return look = Direction.values()[look.ordinal() - 1];// повернуться на 90 градусов против часовой стрелки
     }
 
     public Direction turnRight() {
         if (look.ordinal() == 3) return look = Direction.UP;
-        return look = Direction.values()[look.ordinal()+1];// повернуться на 90 градусов по часовой стрелке
+        return look = Direction.values()[look.ordinal() + 1];// повернуться на 90 градусов по часовой стрелке
     }
 
     public int stepForward() {
@@ -56,12 +57,13 @@ public class Robot implements RobotConnectionManager,RobotConnection {
         // шаг в направлении взгляда мс
         // за один шаг робот изменяет одну свою координату на единицу
     }
-    public static void moveRobot(Robot robot, int toX, int toY){
+
+    public static void moveRobot(Robot robot, int toX, int toY) {
         int dX = robot.getX() - toX;
         int dY = robot.getY() - toY;
         //Direction startLook = robot.getDirection();
-        System.out.println("Начальное положение : " + robot.look+ "  x: "+robot.x+"  y :"+robot.y );
-        System.out.println("Точка назначения :      "+ "  x: "+toX+"  y :"+toY +"\n");
+        System.out.println("Начальное положение : " + robot.look + "  x: " + robot.x + "  y :" + robot.y);
+        System.out.println("Точка назначения :      " + "  x: " + toX + "  y :" + toY + "\n");
         if (dX < 0)  // нужно двигаться вправо
         {
             Direction endLook = Direction.RIGHT;
@@ -113,11 +115,12 @@ public class Robot implements RobotConnectionManager,RobotConnection {
             i++;
             // System.out.println("Шаг");
         }
-        System.out.println("Количество шагов вперед " + i+"\n");
-        System.out.println("Контроль местонахождения : " + robot.look+ "  x: "+robot.x+"  y :"+robot.y );
+        System.out.println("Количество шагов вперед " + i + "\n");
+        System.out.println("Контроль местонахождения : " + robot.look + "  x: " + robot.x + "  y :" + robot.y);
         return;
 
     }
+
     public static void moveRobot(RobotConnectionManager robotConnectionManager, int toX, int toY) {
         robotConnectionManager.getConnection();
         // your implementation here
@@ -126,6 +129,11 @@ public class Robot implements RobotConnectionManager,RobotConnection {
 
     @Override
     public void moveRobotTo(int x, int y) {
+        System.out.println("Начальное положение : " + this.getDirection() + "  x: " + this.getX() + "  y :" + this.getY());
+        this.x = x;
+        this.y = y;
+        System.out.println("Контроль местонахождения : " + this.getDirection() + "  x: " + this.getX() + "  y :" + this.getY());
+
     }
 
     @Override
